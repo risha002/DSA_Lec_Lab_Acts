@@ -1,90 +1,72 @@
 // Simple Queueing System for Customer Service
-// Initial queue with 5 customers
-let queue = ["Elaine", "Althea", "Angelo", "Lito", "Engelbert"];
+let queue = ["Elaine", "Althea", "Angelo", "Lito", "Engelbert"]; // initial queue with 5 customers
 
-// Function to display the current queue in console
+// function to display the current queue in console
 function displayQueue() {
     console.log("Current Queue:");
     if (queue.length === 0) {
-        // If queue is empty, show message
-        console.log("(Queue is empty)");
+        console.log("(Queue is empty)"); //if queue is empty, show message
     } else {
-        // List all customers with their queue number
+        // list all customers with their queue number
         queue.forEach((customer, index) => {
             console.log((index + 1) + ". " + customer);
         });
     }
 }
 
-// Function to add a new customer to the queue
+//Function to add a new customer to the queue
 function addCustomer() {
-    // Prompt user to enter their name
-    let name = prompt("Enter your name to join the queue (Cancel or empty to stop):");
+    let name = prompt("Enter your name to join the queue (Cancel or empty to stop):"); // get user input
     if (name) {
-        // Add the new customer to the queue
-        queue.push(name);
-        // Notify the customer of their position in the queue
-        alert("Hello " + name + "! You are number " + queue.length + " in the queue.");
-        return true; // Indicate a customer was added
+        queue.push(name); //add the new customer to the queue
+        alert("Hello " + name + "! You are number " + queue.length + " in the queue."); //notify the customer of their position in the queue
+        return true; //indicate a customer was added 
     } else {
-        // Notify if no name was entered or prompt was cancelled
-        alert("No name entered or cancelled. Stop adding customers.");
-        return false; // Indicate stop adding customers
+        alert("No name entered or cancelled. Stop adding customers."); //if no name
+        return false; //stop adding customers
     }
 }
 
-// Function to service a customer by number
+//Function to service a customer by number
 function serviceCustomer() {
     if (queue.length === 0) {
-        // If queue is empty, notify and stop servicing
-        alert("The queue is empty. No customers to service.");
+        alert("The queue is empty. No customers to service."); //notify and stop servicing if the queue is empty
         return false;
     }
-    // Prompt for the customer number to service
-    let number = parseInt(prompt("Enter customer number to be serviced:"));
+    let number = parseInt(prompt("Enter customer number to be serviced:")); //prompt the user for the customer number to service
     let index = number - 1;
 
     if (index >= 0 && index < queue.length) {
-        // Get the customer's name
         let served = queue[index];
-        // Notify which customer is being served
-        alert(`Now serving: ${served}`);
-        // Remove the customer from the queue
-        queue.splice(index, 1);
+        alert(`Now serving: ${served}`); //notify wich customer is being served
+        queue.splice(index, 1); //remove the customer from the queue
         console.log("Updated Customer Queue:");
-        //displayQueue();
         return true; // Continue servicing
     } else {
-        // Notify invalid number entered
-        alert("Invalid number.");
+        alert("Invalid number."); //notify if invalid number entered
         return true; // Continue even if invalid input
     }
 }
 
-// Main program flow
-// Welcome message
 alert("Welcome to the Customer Service Queueing System!");
 
-// Display initial queue
-displayQueue();
+displayQueue(); //display the initial queue
 
-// Loop to add customers until user cancels or enters empty
+// oop to add customers until user cancels or enters empty
 while (addCustomer()) {
-    // Keep asking to add customers
+    //keep asking to add customers
 }
 
 // Loop to service customers until queue is empty or user cancels
 while (queue.length > 0) {
-    // Show current queue
-    displayQueue();
-    // Service a customer
-    let cont = serviceCustomer();
-    if (!cont) break;
+    displayQueue(); //show current cue
+    let continueService = serviceCustomer();
+    if (!continueService) 
+        break; //stop servicing if user cancels
 
-    // Ask if want to service another customer
-    let again = confirm("Do you want to service another customer?");
-    if (!again) break;
+    let askAgain = confirm("Do you want to service another customer?"); //ask if the user want to service another customer
+    if (!askAgain) 
+        break; //stop servicing if user cancels
 }
 
-// End message
 alert("Thank you! Service ended.");
