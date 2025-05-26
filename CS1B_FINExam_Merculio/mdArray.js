@@ -1,22 +1,24 @@
-/*
-let subArray1 = prompt("Enter your names: ");
-let subArray2 = parseInt(prompt("Enter your ages: "));
+function multiDimensionalArray () {
+    let namesInput = prompt("Enter names separated by comma: "); //prompts the user to enter names separated by comma
+    let agesInput = prompt("Enter ages separated by comma: "); //prompts the user to enter ages seperated by comma
 
-//create the original multi dimensional array
-let originalArray = [subArray1, subArray2];
+    //convert the input strings into arraus
+    let subArray1 = namesInput.split(",").map(name => name.trim());
+    let subArray2 = agesInput.split(",").map(age => parseInt(age.trim()));
 
-//restructure into new array format: [name, age]
-let restructuredArray = [];
+    let originalArray = [subArray1, subArray2]; //create the original multi-dimensonal array
 
-for (let i = 0; i < subArray1.length; i++) {
-    restructuredArray.push([subArray1[i].trim(), subArray2[i]]);
+    //restructure into new array
+    let restructuredArray = [];
+    for (let i = 0; i < subArray1.length; i++) {
+        restructuredArray.push([subArray1[i], subArray2[i]]);
+    }
+
+    //log each [name, age] pair on a new line
+    console.log("Restructured [name, age] array: "); 
+    restructuredArray.forEach(pair => {
+        console.log(pair);
+    });
+
 }
-
-console.log("restructured name, age array:");
-for (let pair of restructuredArray) {
-    console.log(pair);
-}
-*/
-
-let subArray1 = []; //ma,es
-let subArray2 = []; //ahes
+multiDimensionalArray(); //call the function
