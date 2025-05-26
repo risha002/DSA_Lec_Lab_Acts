@@ -1,5 +1,5 @@
-let word1 = prompt("Enter a word (e.g., RACECAR):");
-let word2 = prompt("Enter a word (e.g., RECORDER): ");
+let word1 = prompt("Enter a word (e.g., RACECAR):"); //prompt the user to enter a word. example: RACECAR
+let word2 = prompt("Enter a word (e.g., RECORDER): "); //prompt the user to enter a word. example: RECORDER
 
 //log to the console the original strings and the reversed stringd
 function reverseString(str) {
